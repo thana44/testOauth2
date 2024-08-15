@@ -7,7 +7,7 @@ const OAuth2Strategy = require("passport-google-oauth2").Strategy;
 passport.use(new OAuth2Strategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "/auth/google/callback",
+    callbackURL: `${process.env.frontend_domain}/auth/google/callback`,
     scope: ['profile', 'email'],
   },
   async(accessToken, refreshToken, profile, done) =>{
@@ -35,7 +35,7 @@ passport.use(new OAuth2Strategy({
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: "/auth/github/callback",
+    callbackURL: `${process.env.frontend_domain}/auth/github/callback`,
     scope: ['profile', 'email']
   },
   async(accessToken, refreshToken, profile, done) =>{

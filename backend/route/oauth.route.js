@@ -37,7 +37,7 @@ router.get('/logout', async(req, res)=>{
                 cookieLists.forEach((c)=>{
                     res.clearCookie(c)
                 })
-                res.redirect('http://localhost:5173/login')
+                res.redirect(`${process.env.frontend_domain}/login`)
             })
         })
     }catch(err){
