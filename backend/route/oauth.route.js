@@ -12,7 +12,7 @@ router.get('/auth/google',passport.authenticate('google', {
 router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: `${process.env.frontend_domain}/login`}),(req, res)=>{
     const PTauth = jwt.sign({msg:'test_test'},process.env.jwt_secret,{expiresIn:'1h'})
     res.cookie('PTauth', PTauth, {maxAge: 1000 * 60 * 60})
-    res.redirect(`${process.env.frontend_domain}/`)
+    res.redirect(303,`${process.env.frontend_domain}/`)
 })
 
 router.get('/auth/github',passport.authenticate('github', { 
@@ -37,7 +37,7 @@ router.get('/logout', async(req, res)=>{
                 cookieLists.forEach((c)=>{
                     res.clearCookie(c)
                 })
-                res.redirect(`${process.env.frontend_domain}/login`)
+                res.redirect(303,`${process.env.frontend_domain}/login`)
             })
         })
     }catch(err){

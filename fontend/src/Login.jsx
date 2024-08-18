@@ -47,7 +47,6 @@ function Login() {
     console.log(data)
 
     const loginwithGoogle = async()=>{
-        setLoading(true)
         try{
             window.open(`${import.meta.env.VITE_BACKEND_DOMAIN}/auth/google/callback`,'_self')
         }catch(err){
@@ -56,7 +55,6 @@ function Login() {
     }
 
     const loginwithGithub = async()=>{
-        setLoading(true)
         try{
             window.open(`${import.meta.env.VITE_BACKEND_DOMAIN}/auth/github/callback`,'_self')
         }catch(err){
